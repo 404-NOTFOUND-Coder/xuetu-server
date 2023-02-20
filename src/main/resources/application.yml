@@ -1,0 +1,31 @@
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/xuetu?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&useSSL=true
+    username: root
+    password: wac62461818
+    type: com.alibaba.druid.pool.DruidDataSource
+  servlet:
+    multipart:
+      max-file-size: 500MB
+      max-request-size: 500MB
+mybatis:
+  type-aliases-package: com.cqupt.xuetu.entity          # 所有实体类所在包路径
+  mapper-locations: classpath:mybatis/mappers/*.xml      # mapper映射文件
+
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 配置log4j
+
+server:
+  port: 8081 # 服务端口号
+
+alipay:
+  # appId
+  appId: 2021000122610781
+  # 应用私钥
+  appPrivateKey: MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCWtRqvwCO028OiVWUjiU7aohAxua7ndASr6UqO5xQTe2kSxERkt0X6oQQs47PKDLpfrtRIXJ0EWgyNNeAERMFlvM+1UD5PvJzTJaHlswgA5/EklLo5nfXr88bS1YRTf1wSHo7SCB3CjbFb8M9byjl4rGxFe0bUd1BJSmffl+qKSmM+3xwJwenOaFCJ3y5aB+BomZsJZt1pz61qllyXEs+yPTtFi401eeOEopzG7Nuve4QWNfLa6swAQ3bVUv1MDZNShKsCT3I5zYq9qiv+tUW33GhlKpCgI1vleebVb0V0Fqw4B6nq3LMOIwbOgH2BVoGnMU/YaemoeKllcZckRVDNAgMBAAECggEABau231oZfdqvF9KixZ2LDAsBFP3pqOfirR1QIuRrCvif0Yb1E90Zkv6wC4hd4YJtGOCZOEfT2LASvNWEImT76foazrXAQnvUYtWNq/j6mh4gIsI956Eb+c7oclJ6cjHeowfnU9veUs3GGLGM++U2GGZUhKDI34HF0ZwtIGq09pMatEkIl1I4KVkcoLSPZzD0EJ/jzFUsKCQzJqWPETdWi/ssKDaaWXElW+k2DFtSnYdhXENClsmas+O4BO1RsaVK/19w+KQoP9IWNAy9XlG7m0Iv//UJhW1kssqG5yWpVvTdbMcaG2W2GXgYuoTpZHKOTMjrEVF+/KWbvAgiM8ICgQKBgQD+s0QmCe06JGsh2gM4pcY+xSJZgZliD5NfD3CTn+qRuZX5350JcSLYAjNl3zzCpf9vZHbSey0gzFMHQwaSnLVwnDEsVgg9K4tGltvgv+sQisFMGvBQVRK6pYN+g5nm/bAZRM/QU79x6A63orJEHir+iXwd1q10PvDFV+/7UZheXQKBgQCXefwJr8/Bxa2qPfVHU3d7r+2Ovk6SrXSlQzJ60YkE8gncw7LeSUWFe4YOq7/74Z8TsXl77lu5Ko1opyEqov31y9+a5rX8YHFk8SQaWAFxfeSVHKZ6LAi6JUJt9ZcIBuKxggIw8rH3HLdF+MR5nBBxiVaIxNgKeKAkqTzcZ7o1MQKBgQCEnD2dOInlPdTxuRr4QYeoYudxhsKfhdCLK/THR/nPibsGcGDI67jikrLEFakDB36pNruO90cVzoxkOYeQijsFuKz5komTn7pSNHWi3Qm8gSIHR/dbPBAWUdrW4hodZHRtk6BHrXL+EX6oKfN69+IWyOpwdre00Jh3h0ORrHgSmQKBgANowG5rYY6n50+0k0emrkK/Y+ZZjCUq+Dwb9g/jlWTiGay5TtZH6eOmMw8zeF+v5UepL+XFKJVTStl3IXz3LCYTD5ZJ6QCkHwk5kClzn5yxS6q7eVe4k/20hvk4lMyecw2xsmDtpWm9YLaXcbyW8ZvMjoEHhSE/M8N/d5oyT3ORAoGAA9zSO3hKto1jr7DDLOaQMNFU5tgIGyVE5phifP58gHRHDU7tVOAQxV1UKq9A6l8sL5aayeOtEe7/yQukJRwDuapfi0iIZKfaX7Lu90+8PY2cL1eTQzxq5umwgEGpiJFtbeV3cpucE/rGO9qujlL1xdiNK5hXoUomkuMmyxk7XFs=
+  # 支付宝公钥
+  alipayPublicKey: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApEJKSNllSjEZ1fTFZrtwu8aCCJCq4l4WsWFnzp5ibiP7HP/8JdrvSqpxgC/cXJozH4gNcNLZLkA21H6r7Dv9cIt7O6qOXxrbo/OcTZeW1BecZhfeUKGh/A6usjZedC1p4qCwfE4xxE7ZwBe3CR5WwqJ1tYG/74PmOIOlqUPYtG14a1C+nchociFsKa/mt9aEP0j525lRunaeOoiMGeTg+sq0OHps4OhpUrMr7nuR8sEhR84TeP2Yg0yXIYnGCA2JroHFCNzS4ruY5CzleQqQTjqVTreBaOGTd/lyariIVjTEEF/8WnIpUDituGTrDTxtG7WdWezSp/1nwD2HVF6UAQIDAQAB
+  # 支付成功回调地址
+  notifyUrl: http://uz4756.natappfree.cc/alipay/notify

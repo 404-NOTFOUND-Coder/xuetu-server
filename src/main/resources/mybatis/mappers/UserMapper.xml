@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cqupt.xuetu.dao.UserDao">
+    <select id="select" resultType="map">
+        select * from ${tablesName}
+        <trim prefix="where">
+            <if test="value != null and value != ''">${key} = ${value}</if>
+        </trim>
+    </select>
+    <insert id="insert" parameterType="list">
+        insert into ${tablesName}
+            (username, password, email, phone)
+        values (#{userName}, #{passWord}, #{Email}, #{Phone})
+    </insert>
+    <delete id="delete" parameterType="String">
+        delete
+        from ${tablesName}
+        where ${key} = ${keyValue}
+    </delete>
+    <insert id="updateData" parameterType="map">
+        INSERT INTO ${tablesName}
+        <foreach collection="mapTypes" index="key" item="value" separator="," open="(" close=")">
+            ${key}
+        </foreach>
+        VALUES
+        <foreach collection="mapTypes" index="key" item="value" separator="," open="(" close=")">
+            #{value}
+        </foreach>
+        ON DUPLICATE KEY UPDATE
+        <foreach collection="mapTypes" index="key" item="value" separator=",">
+            ${key}=VALUES(${key})
+        </foreach>
+        ,${key} = if(values(${key}) = #{userID},values(${key}), ${key})
+    </insert>
+</mapper>
